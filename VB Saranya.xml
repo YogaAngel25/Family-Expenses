@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2025-09-15 11:51:25">
+<sys_update_version action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<file_path/>
+<instance_id>99d504b9eb51a69ce483f459bad0cda7</instance_id>
+<instance_name>dev343177</instance_name>
+<name>sys_script_65940ce893407210506a3a6efaba10b8</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script"&gt;&lt;sys_script action="INSERT_OR_UPDATE"&gt;&lt;abort_action&gt;false&lt;/abort_action&gt;&lt;access&gt;package_private&lt;/access&gt;&lt;action_delete&gt;false&lt;/action_delete&gt;&lt;action_insert&gt;true&lt;/action_insert&gt;&lt;action_query&gt;false&lt;/action_query&gt;&lt;action_update&gt;true&lt;/action_update&gt;&lt;active&gt;true&lt;/active&gt;&lt;add_message&gt;false&lt;/add_message&gt;&lt;advanced&gt;true&lt;/advanced&gt;&lt;change_fields&gt;false&lt;/change_fields&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;collection&gt;u_daily_expenses&lt;/collection&gt;&lt;condition/&gt;&lt;description/&gt;&lt;execute_function&gt;false&lt;/execute_function&gt;&lt;filter_condition/&gt;&lt;is_rest&gt;false&lt;/is_rest&gt;&lt;message/&gt;&lt;name&gt;Family Expenses BR&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;priority&gt;100&lt;/priority&gt;&lt;rest_method/&gt;&lt;rest_method_text/&gt;&lt;rest_service/&gt;&lt;rest_service_text/&gt;&lt;rest_variables/&gt;&lt;role_conditions/&gt;&lt;script&gt;&lt;![CDATA[(function executeRule(current, previous /*null when async*/) 
+{
+	var FamilyExpenses = new GlideRecord('u_family_expenses');
+	FamilyExpenses.addQuery('u_date',current.u_date);
+	FamilyExpenses.query();
+	if(FamilyExpenses.next())
+	{
+		FamilyExpenses.u_amount += current.u_expense;
+		FamilyExpenses.u_expense_details += "&gt;"+current.u_comments+":"+"Rs."+current.u_expense+"/-";
+		FamilyExpenses.update();
+	}
+	else
+	{
+		var NewFamilyExpenses = new GlideRecord('u_family_expenses');
+		NewFamilyExpenses.u_date = current.u_date;
+		NewFamilyExpenses.u_amount = current.u_expense;
+		NewFamilyExpenses.u_expense_details += "&gt;"+current.u_comments+":"+"Rs."+current.u_expense+"/-";
+		NewFamilyExpenses.insert();
+	}
+})(current, previous);]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-09-14 06:41:00&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;65940ce893407210506a3a6efaba10b8&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Family Expenses BR&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_65940ce893407210506a3a6efaba10b8&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-09-14 06:41:00&lt;/sys_updated_on&gt;&lt;template/&gt;&lt;when&gt;before&lt;/when&gt;&lt;/sys_script&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=65940ce893407210506a3a6efaba10b8"/&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;65940ce893407210506a3a6efaba10b8&lt;/id&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-09-14 06:40:59&lt;/sys_created_on&gt;&lt;sys_id&gt;87350ce893407210506a3a6efaba1048&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-09-14 06:40:59&lt;/sys_updated_on&gt;&lt;table&gt;sys_script&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-2132032565</payload_hash>
+<record_name>Family Expenses BR</record_name>
+<reverted_from display_value=""/>
+<source>2640442493407210506a3a6efaba10e7</source>
+<source_table>sys_update_set</source_table>
+<state>current</state>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2025-09-14 06:41:00</sys_created_on>
+<sys_id>9335882c93407210506a3a6efaba1030</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19946f49d250000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2025-09-14 06:41:00</sys_updated_on>
+<type>Business Rule</type>
+<update_guid>5735882cdc407210d7ec412c5f3ae22f</update_guid>
+<update_guid_history>5735882cdc407210d7ec412c5f3ae22f:-2132032565</update_guid_history>
+</sys_update_version>
+</unload>
